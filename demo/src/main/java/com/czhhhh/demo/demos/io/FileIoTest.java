@@ -42,6 +42,7 @@ public class FileIoTest {
      * 1.字节流读取中文文件--乱码
      * 也有办法解决，但是不建议用字节流，字节流编码是ACSII码，而中文是utf-8
      * 字节流可以处理所有文件，字符流只能处理文本
+     *
      * @return
      * @throws IOException
      */
@@ -150,8 +151,10 @@ public class FileIoTest {
 
 
     /**
-     * 6、利用缓存流Buffered快速提升文件复制的效率，比如复制mp3
+     * 6、利用字节缓存流Buffered快速提升文件复制的效率，比如复制mp3
      * BufferedInputStream、BufferedOutputStream 处理的是 字节流；（字节流可以处理所有文件）
+     * 同样的也有字符缓存流，这里就不演示了
+     *
      * @throws IOException
      */
     public static void copyFileByBuffer() throws IOException {
@@ -161,12 +164,19 @@ public class FileIoTest {
         BufferedInputStream bufferedInputStream = null;
         BufferedOutputStream bufferedOutputStream = null;
         int word;
-        sourceStream = new FileInputStream("D:\\Program Files (x86)\\Study\\myproject\\demo\\src\\main\\resources\\static\\mp4\\sourceVideo.mp4");
-        destStream = new FileOutputStream("D:\\Program Files (x86)\\Study\\myproject\\demo\\src\\main\\resources\\static\\mp4\\destVideo.mp4");
-        bufferedInputStream = new BufferedInputStream(sourceStream);
-        bufferedOutputStream = new BufferedOutputStream(destStream);
-        while ((word = bufferedInputStream.read()) != -1) {
-            bufferedOutputStream.write(word);
+        try {
+            sourceStream = new FileInputStream("D:\\Program Files (x86)\\Study\\myproject\\demo\\src\\main\\resources\\static\\mp4\\sourceVideo.mp4");
+            destStream = new FileOutputStream("D:\\Program Files (x86)\\Study\\myproject\\demo\\src\\main\\resources\\static\\mp4\\destVideo.mp4");
+            bufferedInputStream = new BufferedInputStream(sourceStream);
+            bufferedOutputStream = new BufferedOutputStream(destStream);
+            while ((word = bufferedInputStream.read()) != -1) {
+                bufferedOutputStream.write(word);
+            }
+        } finally {
+            sourceStream.close();
+            destStream.close();
+            bufferedInputStream.close();
+            bufferedOutputStream.close();
         }
         long endTime = System.currentTimeMillis();//计算结束时间
         System.out.println("文件复制耗时:" + (endTime - startTime) + "毫秒");
