@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ResponseBody
 public class LombokTest {
     @RequestMapping("/lombok")
-    public User getUser(){
+    public User01 getUser(){
         System.out.println("张三，18");
-        return new User("张三",18);
+        return new User01("张三",18);
     }
 }
 
@@ -25,14 +25,14 @@ public class LombokTest {
 @Getter
 @Setter
 @ToString
-class User {
+class User01 {
     private String name;
     private Integer age;
 
-    public User() {
+    public User01() {
     }
 
-    public User(String name, int age) {
+    public User01(String name, int age) {
         this.name = name;
         this.age = age;
     }
