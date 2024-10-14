@@ -1,13 +1,25 @@
 server:
   port: 8080
 
-# 数据库连接
 spring:
+  # Redis连接配置
+  redis:
+    host: 110.41.159.205
+    port: 6379
+    database: 0
+    password: 123456
+  # Thymeleaf使用
+  thymeleaf:
+    cache: false #开发时关闭缓存，不然看不到实时画面
+  # 数据库连接
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://110.41.159.205:3306/czhdb?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: 123456
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+
     # ----- (有问题，后面再看)下面的内容时Druid数据源的配置，springboot默认使用Hikari
 #    type: com.alibaba.druid.pool.DruidDataSource
 #    druid:
