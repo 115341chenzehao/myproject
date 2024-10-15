@@ -1,12 +1,13 @@
 package com.czhhhh.demo.demos.springboot.jpa;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Service("userServiceImpl")
 public class UserServiceImpl implements UserService{
     // JPA接口，用于数据处理规范，可以调用它的内置方法，进行数据交互
     @Resource

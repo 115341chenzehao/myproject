@@ -19,7 +19,10 @@ spring:
     password: 123456
   jpa:
     database-platform: org.hibernate.dialect.MySQL5Dialect
-
+  mvc:
+    pathmatch:
+      #调整策略，解决2.6.4以上的高版本springboot与springfox不兼容的问题
+      matching-strategy: ant_path_matcher
     # ----- (有问题，后面再看)下面的内容时Druid数据源的配置，springboot默认使用Hikari
 #    type: com.alibaba.druid.pool.DruidDataSource
 #    druid:

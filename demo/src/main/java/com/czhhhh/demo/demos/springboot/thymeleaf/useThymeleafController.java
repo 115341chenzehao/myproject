@@ -3,6 +3,7 @@ package com.czhhhh.demo.demos.springboot.thymeleaf;
 
 import com.czhhhh.demo.demos.springboot.jpa.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class useThymeleafController {
 
     @Autowired
+    @Qualifier("userServiceImpl")
     private UserService useService;
 
     /**
