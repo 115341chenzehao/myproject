@@ -26,6 +26,12 @@
             <version>2.2.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+
 <!--        引入Kinife4j：可以理解为swagger的优化升级-->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
